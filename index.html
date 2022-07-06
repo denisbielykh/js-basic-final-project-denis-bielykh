@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Test</title>
+        
+    <script type="text/javascript">
+        let position = [
+            `Junior QA engineer`,
+            `Middle QA engineer`,
+            `Porduct owner`,
+            `Senior QA engineer`,
+            `Middle developer`,
+            `Project manager`,
+            `Senior developer`,
+            `Junior developer`
+        ];
+        let usersNames = new Array();
+        let team = new Object();
+        function getName() {
+            let userName = prompt(`Enter your name`);
+            if (userName !== null && userName !== '' && userName !== false) {
+                return usersNames.push(userName);
+            } else {
+                alert(`Error, enter correct name`);
+                getName();
+            }
+        };
+        function getNames() {
+            for (i = 0; i < position.length; i++) {
+                getName();
+            }
+        }
+        function returnTeamElement() {
+            return team[i] = {
+                name: usersNames[i],
+                position: position[i],
+            }
+        }
+        function createTeam() {
+            for (i = 0; i < position.length; i++) {
+                returnTeamElement();
+            }
+        }
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min) + min);
+        }
+        function determineTheSalaryDependingOnTheLevelOfTheEmployee(element) {
+            if (team[element].position.indexOf(`Junior`) === 0) {
+				return team[element].salary = getRandomInt(500, 1000);
+			} else if (team[element].position.indexOf(`Middle`) === 0) {
+				return team[element].salary = getRandomInt(1500, 2000);
+			} else if (team[element].position.indexOf(`Senior`) === 0) {
+				return team[element].salary = getRandomInt(2500, 3000);
+			} else {
+				return team[element].salary = getRandomInt(4000, 4500);
+			}
+        }
+        function setSalary() {
+        	for (let element in team) {
+                determineTheSalaryDependingOnTheLevelOfTheEmployee(element);
+		    }
+		}
+        getNames();
+        createTeam();        
+        setSalary();
+        for (let element in team) {
+            if (team[element].name !== `` && `name` in team[element]) {
+                team[element].tellAboutYourSelf = function () {
+                    console.log(`Меня зовут ${this.name} и я - ${this.position}. Я зарабатываю ${this.salary}$.`);
+                };
+            } else {
+                continue;
+            };
+        };        
+        team.showTeam = function () {
+            for (let element in team) {
+                if (team[element].name !== `` && `name` in team[element]) {
+                    console.log(`"${team[element].name} - ${team[element].position}. Зарплата - ${team[element].salary}$."*`);
+                } else {
+                    continue;
+                };
+            };
+        };
+        team.showTeam();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
